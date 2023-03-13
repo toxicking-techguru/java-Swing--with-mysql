@@ -1,8 +1,8 @@
 package gui2;
-
-import gui2.librarian.Branch3;
-import gui2.librarian.Branch2;
-import gui2.librarian.Branch1;
+import gui2.admin.Admin;
+import gui2.admin.BranchManagerLogin;
+import gui2.admin.CustomerLogin;
+import gui2.librarian.LibrarianLogin;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -25,60 +25,55 @@ public class Gui2 extends JFrame {
         JMenu branchManagerMenu = new JMenu("Branch Manager");
 
         // Create menu items
-        JMenuItem adminMenuItem1 = new JMenuItem("Admin Menu Item 1");
-        JMenuItem adminMenuItem2 = new JMenuItem("Admin Menu Item 2");
-        JMenuItem librarianMenuItem1 = new JMenuItem("branch 1");
-        JMenuItem librarianMenuItem2 = new JMenuItem("branch 2");
+        JMenuItem adminMenuItem1 = new JMenuItem("Welcome");
 
-        JMenuItem librarianMenuItem3 = new JMenuItem("branch 3");
-        JMenuItem customerMenuItem1 = new JMenuItem("Customer Menu Item 1");
-        JMenuItem customerMenuItem2 = new JMenuItem("Customer Menu Item 2");
-        JMenuItem branchManagerMenuItem1 = new JMenuItem("Branch Manager Menu Item 1");
-        JMenuItem branchManagerMenuItem2 = new JMenuItem("Branch Manager Menu Item 2");
+        JMenuItem librarianMenuItem1 = new JMenuItem("Welcome");
 
-        // Add action listener to branch 1 menu item
+
+        JMenuItem customerMenuItem1 = new JMenuItem("Welcome");
+
+        JMenuItem branchManagerMenuItem1 = new JMenuItem("Welcome");
+
+
+        adminMenuItem1.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    new Admin();
+
+                }
+            });
+
+
+  customerMenuItem1.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    new CustomerLogin();
+
+                }
+            });
+
+
         librarianMenuItem1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new Branch1();
-                
+                new LibrarianLogin();
+
             }
         });
 
-        
-        
-        
-        // Add action listener to branch 2 menu item
-        librarianMenuItem2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-              
-                new Branch2();
-            }
-        });
+        branchManagerMenuItem1.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    new BranchManagerLogin();
 
-       
-        
-        // Add action listener to branch 3 menu item
-        librarianMenuItem3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-              
-                new Branch3();
-            }
-        });
-        
-        
-        
-        
-        
+                }
+            });
+
+
+
         // Add menu items to menus
         adminMenu.add(adminMenuItem1);
-        adminMenu.add(adminMenuItem2);
+
         librarianMenu.add(librarianMenuItem1);
-        librarianMenu.add(librarianMenuItem2);
-        librarianMenu.add(librarianMenuItem3);
         customerMenu.add(customerMenuItem1);
-        customerMenu.add(customerMenuItem2);
         branchManagerMenu.add(branchManagerMenuItem1);
-        branchManagerMenu.add(branchManagerMenuItem2);
+
 
         // Add menus to menu bar
         menuBar.add(adminMenu);
@@ -91,6 +86,11 @@ public class Gui2 extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(2, 1));
+
+        // Add welcome label to panel
+        JLabel welcomeLabel = new JLabel("Welcome to  high-level System! select options above.");
+        welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(welcomeLabel);
 
         add(panel);
 
